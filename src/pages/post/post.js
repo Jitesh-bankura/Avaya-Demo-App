@@ -1,8 +1,10 @@
 import React, {Component} from 'react'
 import axios from '../../axios'
 import { Grid } from 'semantic-ui-react'
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-export default class Post extends Component {
+class Post extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -49,6 +51,7 @@ export default class Post extends Component {
 
     }
     componentDidMount(){
+        if(!this.props.isLoggedIn) this.props.history.push('/')
         this.getUsersData()
     }
     render() {
@@ -63,3 +66,9 @@ export default class Post extends Component {
         )
     }
 }
+const mapStateToProps = state => ({
+    isLoggedIn:state.loginData.loggedIn
+  })
+  
+  
+  export default connect(mapStateToProps) (withRouter(Post));

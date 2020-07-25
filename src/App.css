@@ -25,7 +25,7 @@
 }
 .sidebar {
   width: 20%;
-  background-color: aquamarine;
+  background-color: #8fc49d	;
   display:flex;
   flex-direction: column;
   height:90vh;
@@ -46,11 +46,21 @@
 .App-link {
   color: #61dafb;
 }
+.button-color{
+  margin:11px !important;
+}
 .card-design {
   margin:25px !important;
 }
+.button-design {
+  margin-left:25px !important;
+  margin-right:25px !important;
+  margin-top:25px !important;;
+  width:180px;
+  background-color: #00827c;
+}
 .Header {
-  background-color: bisque;
+  background-color: #458c58	;
   height: 10vh;
   text-align: right;
 }

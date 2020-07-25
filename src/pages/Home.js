@@ -1,12 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 function Home() {
   return (
     <div className="Home">
-      <h1>Home page</h1>
-      <Link to="/about">Go to About page</Link>
-      <Link to="/login">Go to Login page</Link>
+      <h1>Welcome to Avaya</h1>
     </div>
   )
 }

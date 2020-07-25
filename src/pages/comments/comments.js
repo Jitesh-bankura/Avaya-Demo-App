@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import axios from '../../axios'
+import avatar from './avatar.jpg';
+import { Grid } from 'semantic-ui-react';
 
 export default class Comments extends Component {
     constructor(props) {
@@ -13,13 +15,22 @@ export default class Comments extends Component {
             .get(`/comments`, {})
             .then(res => {
                 const data = res.data
-                console.log('Comments component data',data)
                 const users = data.map(u =>
-                    <div>
-                    <p>{u.id}</p>
-                    <p>{u.name}</p>
-                    <p>{u.email}</p>
-                    <p>{u.body}</p>
+                    <div class="ui card z--1 card-design">
+                    <div class="content">
+                        <div class="header">{u.name}</div>
+                        <div class="meta">
+                        <span class="category">id: {u.id}</span>
+                        </div>
+                        <div class="description">
+                        <p>{u.body}</p>
+                        </div>
+                    </div>
+                    <div class="extra content">
+                        <div class="right floated author">
+                        <img class="ui avatar image" src={avatar} /> {u.email}
+                        </div>
+                    </div>
                     </div>
                     )
 
@@ -41,7 +52,9 @@ export default class Comments extends Component {
         return (
             <div>
                 <h1>Comments</h1>
-                {this.state.users}
+                <Grid columns={3} divided>
+                    {this.state.users}
+                </Grid>
             </div>
         )
     }

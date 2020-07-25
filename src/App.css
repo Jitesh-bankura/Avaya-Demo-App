@@ -23,9 +23,44 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+.sidebar {
+  width: 20%;
+  background-color: aquamarine;
+  display:flex;
+  flex-direction: column;
+  height:90vh;
+}
+.center-container {
+  height: 90vh;
+  width: 80%;
+  overflow-y: scroll;
+}
+.default-container {
+  height: 90vh;
+  width: 100%;
+  overflow-y: hidden;
+}
+.main-container {
+  display: flex;
+}
 .App-link {
   color: #61dafb;
+}
+.card-design {
+  margin:25px !important;
+}
+.Header {
+  background-color: bisque;
+  height: 10vh;
+  text-align: right;
+}
+.sticky-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.z--1 {
+  z-index: -1;
 }
 
 @keyframes App-logo-spin {

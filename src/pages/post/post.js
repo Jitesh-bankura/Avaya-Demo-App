@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import axios from '../../axios'
+import { Grid } from 'semantic-ui-react'
 
 export default class Post extends Component {
     constructor(props) {
@@ -15,11 +16,26 @@ export default class Post extends Component {
                 const data = res.data
                 console.log('post component data',data)
                 const users = data.map(u =>
-                    <div>
-                    <p>{u.id}</p>
-                    <p>{u.title}</p>
-                    <p>{u.body}</p>
+                    <div class="ui card z--1 card-design">
+                    <div class="content">
+                      <div class="header">{u.title}</div>
+                      <div class="meta">{u.id}</div>
+
+                      <div class="description">
+                        <p>{u.body}</p>
+                      </div>
                     </div>
+                    <div class="extra content">
+                      <span class="left floated like">
+                        <i class="like icon"></i>
+                        Like
+                      </span>
+                      <span class="right floated star">
+                        <i class="star icon"></i>
+                        Favorite
+                      </span>
+                    </div>
+                  </div>
                     )
 
                     this.setState({
@@ -40,7 +56,9 @@ export default class Post extends Component {
         return (
             <div>
                 <h1>Post</h1>
-                {this.state.users}
+                <Grid columns={3} divided>
+                    {this.state.users}
+                </Grid>
             </div>
         )
     }

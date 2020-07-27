@@ -13,10 +13,8 @@ class Users extends Component {
     }
     createUserCard(u){
         return (
-            <div className="ui card z--1 card-design">
+            <div className="ui card z--1 card-design red">
                     <div className="content">
-                      <i className="right floated like icon"></i>
-                      <i className="right floated star icon"></i>
                       <div className="header">{u.name} - {u.id}</div>
 
                       <div className="description">
@@ -24,16 +22,6 @@ class Users extends Component {
                         <p>{u.website}</p>
                         <p>{u.company.name}</p>
                       </div>
-                    </div>
-                    <div className="extra content">
-                      <span className="left floated like">
-                        <i className="like icon"></i>
-                        Like
-                      </span>
-                      <span className="right floated star">
-                        <i className="star icon"></i>
-                        Favorite
-                      </span>
                     </div>
                   </div>
         )

@@ -5,18 +5,18 @@ import { connect } from 'react-redux';
 import { logoutSuccess } from '../../actions/login'
 
 function Header(props) {
-    function handleLogoutClick(){
-        props.logoutSuccess();
-    }
+  function handleLogoutClick() {
+    props.logoutSuccess();
+  }
   return (
     <>
-    <div className="Header sticky-header">
-      <Link onClick={handleLogoutClick} to="/"><Button primary className='button-color'>Logout</Button></Link>
-    </div>
-    <div className="Header">
-    </div>
+      <div className="Header sticky-header">
+        <Link onClick={handleLogoutClick} to="/"><Button primary className='button-color'>Logout</Button></Link>
+      </div>
+      <div className="Header">
+      </div>
     </>
   )
 }
 
-export default connect(null,{logoutSuccess})(Header);
+export default connect(null, { logoutSuccess })(Header);

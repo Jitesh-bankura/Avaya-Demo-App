@@ -1,13 +1,21 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
-function Home() {
+function Home(props) {
+  useEffect(function () {
+    if (!props.isLoggedIn) props.history.push('/')
+  }, [])
   return (
     <div className="Home">
-      <h1>Home page</h1>
-      <Link to="/about">Go to About page</Link>
+      <h1>Welcome to Avaya</h1>
     </div>
   )
 }
 
-export default Home;
+const mapStateToProps = state => ({
+  isLoggedIn: state.loginData.loggedIn
+})
+
+
+export default connect(mapStateToProps)(withRouter(Home));

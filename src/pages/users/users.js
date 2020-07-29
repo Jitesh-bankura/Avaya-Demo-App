@@ -24,7 +24,7 @@ class Users extends Component {
       .then(res => {
         const data = res.data
         this.setState({
-          users: data
+          users: data || []
         })
 
       })
@@ -53,8 +53,25 @@ class Users extends Component {
       })
     }, 300)
   }
+  sortComparator(a,b){
+    const nameA=a.name.toLowerCase();
+    const nameB= b.name.toLowerCase();
+    if(nameA>nameB){
+      return 1;
+    }
+    if(nameA<nameB){
+      return -1;
+    }
+    return 0;
+  }
   render() {
-    const userToDisplay = this.state.results || this.state.users;
+    let userToDisplay = this.state.results || this.state.users
+    if(this.state.sortType){
+      userToDisplay= userToDisplay.sort(this.sortComparator);
+    if(this.state.sortType === 'dsc'){
+      userToDisplay= userToDisplay.reverse();
+    }
+    }
     return (
       <div>
         <h1>Users</h1>
@@ -64,6 +81,8 @@ class Users extends Component {
           value={this.state.value}
           showNoResults={false}
         />
+          <button className="ui primary button button-align" onClick={()=>{this.setState({sortType: 'asc'})}}>Ascending</button>
+          <button className="ui secondary button button-align" onClick={()=>{this.setState({sortType: 'dsc'})}}>Descending</button>
         <Grid columns={3} divided>
           {userToDisplay.map((u, index) => {
             return (<>
